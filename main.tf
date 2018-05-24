@@ -1,3 +1,10 @@
+provider "azurerm" {}
+
+terraform {
+  # The configuration for this backend will be filled in by Terragrunt
+  backend "azurerm" {}
+}
+
 # Create ressource group
 resource "azurerm_resource_group" "rg" {
   name     = "${var.rg_name}"
