@@ -28,5 +28,4 @@ resource "azurerm_subnet" "subnet" {
   resource_group_name  = "${azurerm_resource_group.rg.name}"
   virtual_network_name = "${azurerm_virtual_network.vpc.name}"
   address_prefix       = "${var.subnet_space}"
-  tags = "${var.tags}"
 }
