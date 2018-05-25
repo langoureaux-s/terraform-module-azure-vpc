@@ -1,17 +1,15 @@
-provider "azurerm" {}
-
 terraform {
   # The configuration for this backend will be filled in by Terragrunt
   backend "azurerm" {}
 }
 
+provider "azurerm" {}
+
 # Create ressource group
 resource "azurerm_resource_group" "rg" {
   name     = "${var.rg_name}"
   location = "${var.location}"
-  tags {
-    ${var.tags}
-  }
+  tags = "${var.tags}"
 }
 
 # Create VPC
@@ -20,9 +18,7 @@ resource "azurerm_virtual_network" "vpc" {
   address_space       = ["${var.address_space}"]
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.rg.name}"
-  tags {
-    ${var.tags}
-  }
+  tags = "${var.tags}"
 }
 
 
@@ -32,7 +28,5 @@ resource "azurerm_subnet" "subnet" {
   resource_group_name  = "${azurerm_resource_group.rg.name}"
   virtual_network_name = "${azurerm_virtual_network.vpc.name}"
   address_prefix       = "${var.subnet_space}"
-  tags {
-    ${var.tags}
-  }
+  tags = "${var.tags}"
 }
