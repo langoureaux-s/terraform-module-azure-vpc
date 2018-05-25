@@ -7,7 +7,7 @@ variable "rg_name" {
 }
 
 variable "name" {
- description = "The suffix for all VPC' resources"
+    description = "The suffix for all VPC' resources"
 }
 
 variable "address_space" {
