@@ -24,8 +24,9 @@ resource "azurerm_virtual_network" "vpc" {
 
 # Create subnet
 resource "azurerm_subnet" "subnet" {
-  name                 = "subnet-${var.name}"
+  count                = "${length(var.subnets)}"
+  name                 = "subnet-${lookup(var.subnets[count.index], "name")}"
   resource_group_name  = "${azurerm_resource_group.rg.name}"
   virtual_network_name = "${azurerm_virtual_network.vpc.name}"
-  address_prefix       = "${var.subnet_space}"
+  address_prefix       = "${lookup(var.subnets[count.index], "subnet_space")}"
 }

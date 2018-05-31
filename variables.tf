@@ -14,9 +14,11 @@ variable "address_space" {
     description = "The VPC address space"
 }
 
-variable "subnet_space" {
-    description = "The Subnet space to create"
+variable "subnets" {
+    description = "The list of subnets space to create"
+    type="list"
 }
+
 
 
 variable "tags" {
