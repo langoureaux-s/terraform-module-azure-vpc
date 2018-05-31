@@ -21,3 +21,7 @@ output "subnets_id" {
 output "subnets_name" {
   value = ["${azurerm_subnet.subnet.*.name}"]
 }
+
+output "subnets_network" {
+  value = ["${azurerm_subnet.subnet.*.address_prefix}"]
+}
